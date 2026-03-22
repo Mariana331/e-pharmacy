@@ -1,0 +1,212 @@
+.shopForm {
+  padding: 64px 0 80px 0;
+  background: #f7f8fa;
+}
+
+.create_shop_wrapper {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.form {
+  border-radius: 27px;
+  padding: 40px 20px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  color: #1d1e21;
+  margin-bottom: 12px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: #6a6a6f;
+  margin-bottom: 40px;
+}
+
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.input_box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form_label {
+  padding-left: 18px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 129%;
+  color: #1d1e21;
+}
+
+.form_input {
+  border: 1px solid rgba(29, 30, 33, 0.2);
+  border-radius: 60px;
+  width: 100%;
+  padding: 13px 18px;
+}
+
+.form_input::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.4);
+}
+
+.form_input.input_error,
+.form_input.input_error:focus {
+  border-color: #ef2447;
+}
+
+.form_input:focus {
+  outline: none;
+}
+
+.form_input:not(:placeholder-shown) {
+  border-color: #59b17a;
+}
+
+.error_text {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  font-size: 10px;
+  color: #ef5050;
+}
+
+.radio_text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 129%;
+  color: #1d1e21;
+  margin-bottom: 14px;
+}
+
+.radio_box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.radio_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.radio {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.6);
+}
+
+.input_radio {
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  accent-color: #59b17a;
+}
+
+.btn_create {
+  border-radius: 60px;
+  padding: 13px 26px;
+  max-width: 155px;
+  background: #59b17a;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #f7f8fa;
+}
+
+.btn_create:hover {
+  color: #59b17a;
+  background: #f7f8fa;
+  border: 1px solid rgba(89, 177, 122, 0.5);
+}
+
+.image {
+  width: 335px;
+  height: 470px;
+  border-radius: 27px;
+}
+
+@media screen and (min-width: 768px) {
+  .shopForm {
+    padding: 80px 0 120px 0;
+  }
+
+  .form {
+    padding: 40px 38px;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .input_wrapper {
+    margin-bottom: 24px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 24px;
+    column-gap: 14px;
+  }
+
+  .form_input {
+    width: 200px;
+  }
+
+  .btn_create {
+    padding: 13px 32px;
+    max-width: 167px;
+  }
+
+  .image {
+    width: 704px;
+    height: 550px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .shopForm {
+    padding: 64px 0 100px 0;
+  }
+
+  .create_shop_wrapper {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+  }
+
+  .form {
+    padding: 40px;
+    max-width: 708px;
+  }
+
+  .image {
+    width: 456px;
+    height: 624px;
+  }
+}

@@ -1,0 +1,231 @@
+.register_form {
+  padding: 85px 0 191px;
+  background: #f7f8fa;
+}
+
+.register_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.register_title {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.register_image {
+  position: absolute;
+  top: -40%;
+  right: 25px;
+}
+
+.image {
+  width: 95px;
+  height: 93px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 121%;
+  color: #1d1e21;
+  max-width: 335px;
+}
+
+.error_text {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  font-size: 10px;
+  color: #ef5050;
+}
+
+.span_title {
+  color: #59b17a;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input_name,
+.input_email,
+.input_tel {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.input_password {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.password_btn_eyes {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: block;
+  z-index: 2;
+}
+
+.password_eye_icon,
+.password_eye_icon_off {
+  stroke-width: 1.5px;
+  stroke: #59b17a;
+  fill: none;
+}
+
+.form_input {
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 60px;
+  background: #fff;
+  width: 100%;
+  padding: 13px 18px;
+}
+
+.form_input::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.4);
+}
+
+.form_input.input_error,
+.form_input.input_error:focus {
+  border-color: #ef2447;
+}
+
+.form_input:focus {
+  outline: none;
+}
+
+.form_input:not(:placeholder-shown) {
+  border-color: #59b17a;
+}
+
+.btn {
+  text-align: center;
+}
+
+.btn_register {
+  background: #59b17a;
+  border-radius: 60px;
+  padding: 13px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.btn_register:hover {
+  color: #59b17a;
+  background: #fff;
+  border: 1px solid rgba(89, 177, 122, 0.5);
+}
+
+.link {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.4);
+  text-align: center;
+}
+
+.error {
+  color: #78e430;
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .register_form {
+    padding: 168px 0 250px;
+  }
+
+  .register_title {
+    margin-bottom: 54px;
+  }
+
+  .register_image {
+    top: -45%;
+    right: 100px;
+  }
+
+  .image {
+    width: 179px;
+    height: 175px;
+  }
+
+  .title {
+    max-width: 614px;
+    font-size: 54px;
+    line-height: 111%;
+  }
+
+  .form {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .input_name,
+  .input_email,
+  .input_tel,
+  .input_password,
+  .btn_register {
+    width: 280px;
+    max-height: 43px;
+  }
+
+  .input_name {
+    margin-bottom: 14px;
+    margin-right: 14px;
+  }
+
+  .input_tel {
+    margin-bottom: 62px;
+    margin-right: 14px;
+  }
+
+  .form_input::placeholder {
+    font-size: 14px;
+  }
+
+  .btn_register {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .register_form {
+    padding: 226px 0 262px;
+  }
+
+  .register_container {
+    flex-direction: row;
+  }
+
+  .register_title {
+    margin-right: 52px;
+    margin-bottom: 0;
+    width: 614px;
+  }
+
+  .register_image {
+    top: -45%;
+    right: 10px;
+  }
+
+  .form {
+    width: 574px;
+  }
+}

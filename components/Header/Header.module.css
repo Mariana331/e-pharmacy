@@ -1,19 +1,19 @@
 .header {
   background: #f7f8fa;
-  display: flex;
-  justify-content: space-between;
 }
 
 .header_container {
   padding-top: 25px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .logo {
   display: flex;
   gap: 12px;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
@@ -22,7 +22,6 @@
   height: 32px;
   overflow: hidden;
   object-fit: cover;
-  display: block;
 }
 
 .link_text {
@@ -32,11 +31,16 @@
   color: #1d1e21;
 }
 
-.nav_list {
+.nav {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav_list {
   display: none;
   gap: 8px;
-  width: fit-content;
 }
 
 .nav_item {
@@ -45,13 +49,24 @@
   line-height: 100%;
   background: #fff;
   border-radius: 60px;
-  padding: 16px 19px;
+  padding: 8px 19px;
   color: #93939a;
+  border: 8px solid #fff;
 }
 
 .nav_item:hover {
   background: #59b17a;
   color: #f7f8fa;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user {
+  display: none;
 }
 
 .log_btn {
@@ -69,6 +84,12 @@
 .log_btn:hover {
   background: #59b17a;
   color: #fff;
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .burger_icon {
@@ -102,5 +123,15 @@
 
   .log_btn {
     display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user {
+    display: block;
+    font-weight: 600;
+    font-size: 28 + +px;
+    color: #1d1e21;
+    margin-right: 8px;
   }
 }

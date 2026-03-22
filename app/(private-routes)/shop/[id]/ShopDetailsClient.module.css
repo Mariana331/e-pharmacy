@@ -1,0 +1,217 @@
+.shop {
+  background: #f7f8fa;
+}
+
+.shop_container {
+  padding: 64px 0 80px;
+}
+
+.shop_name {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 114%;
+  color: #1d1e21;
+  margin-bottom: 20px;
+}
+
+.box_info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.shop_owner {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: #93939a;
+  margin-bottom: 8px;
+}
+
+.shop_span {
+  color: #1d1e21;
+}
+
+.wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.shop_street,
+.shop_phone {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.map_icon {
+  stroke: #59b17a;
+  fill: none;
+}
+
+.street_text,
+.phone_text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: #93939a;
+}
+
+.shop_links {
+  display: flex;
+  gap: 4px;
+}
+
+.edit {
+  border-radius: 30px;
+  padding: 10px 24px;
+  background: rgba(89, 177, 122, 0.1);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  white-space: nowrap;
+  color: #59b17a;
+}
+
+.add {
+  border-radius: 30px;
+  padding: 10px 24px;
+  background: #59b17a;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #f7f8fa;
+  white-space: nowrap;
+}
+
+edit:hover {
+  color: #f7f8fa;
+  background: #59b17a;
+}
+
+.add:hover {
+  color: #59b17a;
+  background: rgba(89, 177, 122, 0.1);
+}
+
+.tabs {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(29, 30, 33, 0.12);
+}
+
+.tab_wrapper {
+  position: relative;
+}
+
+.store,
+.medicine {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: #93939a;
+}
+
+.store:active,
+.medicine:active {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: #1d1e21;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 2px;
+  background-color: #59b17a;
+}
+
+@media screen and (min-width: 768px) {
+  .shop_container {
+    padding: 80px 0 120px;
+  }
+
+  .shop_name {
+    margin-bottom: 40px;
+  }
+
+  .box_info {
+    max-width: 494px;
+  }
+
+  .shop_info {
+    display: flex;
+  }
+
+  .shop_owner {
+    font-size: 16px;
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
+
+  .street_text,
+  .phone_text {
+    font-size: 16px;
+  }
+
+  .tab_wrapper {
+    padding: 0 10px;
+  }
+
+  .store,
+  .medicine,
+  .store:active,
+  .medicine:active {
+    font-size: 16px;
+  }
+
+  .active::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background-color: #59b17a;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .shop_container {
+    padding: 100px 0 100px;
+  }
+
+  .shop_desk {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 43px;
+  }
+
+  .shop_name {
+    margin-bottom: 0;
+  }
+
+  .box_info {
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+
+  .shop_owner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
