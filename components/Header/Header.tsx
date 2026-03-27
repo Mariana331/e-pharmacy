@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 
 const Header = () => {
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const router = useRouter();
   const { shop } = shopStore();
   const { isAuthenticated, clearIsAuthenticated, user } = useAuthStore();
@@ -22,7 +23,11 @@ const Header = () => {
   };
 
   useEffect(() => {
-    shopStore.persist.rehydrate();
+    const hydrate = async () => {
+      await shopStore.persist.rehydrate();
+      setHydrated(true);
+    };
+    hydrate();
   }, []);
   return (
     <header className={css.header}>
@@ -86,7 +91,11 @@ const Header = () => {
                     <Link href="/shop/create">Shop</Link>
                   </li>
                   <li className={css.nav_item}>
-                    <Link href={shop ? `/shop/${shop._id}` : '/shop/create'}>
+                    <Link
+                      href={
+                        hydrated && shop ? `/shop/${shop._id}` : '/shop/create'
+                      }
+                    >
                       Medicine
                     </Link>
                   </li>

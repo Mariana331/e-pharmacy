@@ -42,6 +42,7 @@ export default function CreateShopForm() {
   const onSubmit = async (data: CreateShopData) => {
     try {
       const response = await CreateShop(data);
+      console.log('response:', response);
       const shop = response.data.shop;
 
       if (shop) {

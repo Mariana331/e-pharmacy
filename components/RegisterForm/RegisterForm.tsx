@@ -10,8 +10,12 @@ import { ApiError } from '@/app/api/api';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { useAuthStore } from '@/lib/store/authStore';
-import { GetUser } from '@/lib/api/clientApi';
 import { useState } from 'react';
+import { User } from '@/types/user';
+
+interface RegisterFormProps {
+  user: User;
+}
 
 export const Schema = Yup.object().shape({
   name: Yup.string().min(3).max(30).required('Name is required'),
@@ -44,9 +48,9 @@ export default function RegisterForm() {
 
   const onSubmit = async (data: RegisterRequest) => {
     try {
-      await Register(data);
-      const userInfo = await GetUser();
-      setUser(userInfo.data.user);
+      const response = await Register(data);
+      const user = response.data.user;
+      setUser(user);
       toast.success('Registration successful!');
       reset();
       router.push('/shop/create');

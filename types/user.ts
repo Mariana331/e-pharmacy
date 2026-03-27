@@ -28,7 +28,7 @@ export interface LoginRequest {
 export interface RegisterResponse {
   status: number;
   message: string;
-  data: User;
+  data: { user: User };
 }
 
 export interface LoginResponse {
