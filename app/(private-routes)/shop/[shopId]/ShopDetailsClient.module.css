@@ -107,35 +107,29 @@ edit:hover {
   border-bottom: 1px solid rgba(29, 30, 33, 0.12);
 }
 
-.tab_wrapper {
-  position: relative;
-}
-
 .store,
 .medicine {
   font-weight: 400;
   font-size: 14px;
   line-height: 129%;
   color: #93939a;
+  position: relative;
 }
 
-.store:active,
-.medicine:active {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 129%;
+.active {
   color: #1d1e21;
 }
 
 .active::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -17px;
   left: 50%;
   transform: translateX(-50%);
   width: 70px;
   height: 2px;
   background-color: #59b17a;
+  margin-top: 16px;
 }
 
 @media screen and (min-width: 768px) {
@@ -180,7 +174,7 @@ edit:hover {
   .active::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -16px;
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
@@ -213,5 +207,16 @@ edit:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .active::after {
+    content: '';
+    position: absolute;
+    bottom: -17px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background-color: #59b17a;
   }
 }

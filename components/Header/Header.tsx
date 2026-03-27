@@ -24,32 +24,53 @@ const Header = () => {
       <div className={isAuthenticated ? 'container' : 'container_beforeAuth'}>
         <div className={css.header_container}>
           <div className={css.logo}>
-            {' '}
-            <Link href="/">
-              <picture>
-                <source
-                  media="(max-width: 768px)"
-                  srcSet="/logo/green.mob.svg"
-                />
-                <source
-                  media="(max-width: 1440px)"
-                  srcSet="/logo/green.desk.svg"
-                />
-                <img
-                  className={css.image}
-                  src="/logo/green.desk.svg"
-                  alt="logo"
-                />
-              </picture>
-            </Link>
             {isAuthenticated ? (
-              <Link className={css.link_text} href="/shop/create">
-                E-Pharmacy
-              </Link>
+              <>
+                <Link href="/shop/create">
+                  <picture>
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet="/logo/green.mob.svg"
+                    />
+                    <source
+                      media="(max-width: 1440px)"
+                      srcSet="/logo/green.desk.svg"
+                    />
+                    <img
+                      className={css.image}
+                      src="/logo/green.desk.svg"
+                      alt="logo"
+                    />
+                  </picture>
+                </Link>
+
+                <Link className={css.link_text} href="/shop/create">
+                  E-Pharmacy
+                </Link>
+              </>
             ) : (
-              <Link className={css.link_text} href="/">
-                E-Pharmacy
-              </Link>
+              <>
+                <Link href="/">
+                  <picture>
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet="/logo/green.mob.svg"
+                    />
+                    <source
+                      media="(max-width: 1440px)"
+                      srcSet="/logo/green.desk.svg"
+                    />
+                    <img
+                      className={css.image}
+                      src="/logo/green.desk.svg"
+                      alt="logo"
+                    />
+                  </picture>
+                </Link>
+                <Link className={css.link_text} href="/">
+                  E-Pharmacy
+                </Link>
+              </>
             )}
           </div>
           {isAuthenticated && user && (
@@ -57,12 +78,12 @@ const Header = () => {
               <nav className={css.nav}>
                 <ul className={css.nav_list}>
                   <li className={css.nav_item}>
-                    <Link href={shop ? `/shop/${shop._id}` : '/shop/create'}>
-                      Shop
-                    </Link>
+                    <Link href="/shop/create">Shop</Link>
                   </li>
                   <li className={css.nav_item}>
-                    <Link href="/medicine">Medicine</Link>
+                    <Link href={shop ? `/shop/${shop._id}` : '/shop/create'}>
+                      Medicine
+                    </Link>
                   </li>
                   <li className={css.nav_item}>
                     <Link href="/statistics">Statistics</Link>

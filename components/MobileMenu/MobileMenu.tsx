@@ -40,7 +40,10 @@ export const MobileMenu = ({
               </Link>
             </li>
             <li className={css.nav_item}>
-              <Link href="/medicine" onClick={onClose}>
+              <Link
+                href={shop ? `/shop/${shop._id}/product` : '/shop/create'}
+                onClick={onClose}
+              >
                 Medicine
               </Link>
             </li>

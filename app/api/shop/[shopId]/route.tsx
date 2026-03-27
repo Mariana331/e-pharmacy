@@ -1,23 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { api } from '../../../api';
-import { cookies } from 'next/headers';
+import { api } from '../../api';
 import { isAxiosError } from 'axios';
-import { logErrorResponse } from '@/app/api/utils/utils';
+import { cookies } from 'next/headers';
+import { logErrorResponse } from '../../utils/utils';
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{ shopId: string }>;
 }
 
-export async function PUT(req: NextRequest, { params }: Props) {
-  const { id } = await params;
+export async function GET(req: NextRequest, { params }: Props) {
+  const { shopId } = await params;
 
   try {
-    const body = await req.json();
-
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('accessToken')?.value;
 
-    const apiRes = await api.put(`/shop/${id}/update`, body, {
+    const apiRes = await api.get(`/shop/${shopId}`, {
       headers: {
         Authorization: accessToken ? `Bearer ${accessToken}` : '',
       },

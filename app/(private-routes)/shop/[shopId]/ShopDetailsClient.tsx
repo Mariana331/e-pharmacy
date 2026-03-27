@@ -5,12 +5,17 @@ import { GetShopById } from '@/lib/api/clientApi';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useState } from 'react';
+import ShopProductClient from './product/ShopProductsClient';
+
+type Tab = 'store' | 'medicine';
 
 export default function ShopDetailsClient() {
-  const { id } = useParams<{ id: string }>();
+  const [activeTab, setActiveTab] = useState<Tab>('store');
+  const { shopId } = useParams<{ shopId: string }>();
   const { data, isLoading, error } = useQuery({
-    queryKey: ['shops', id],
-    queryFn: () => GetShopById(id),
+    queryKey: ['shops', shopId],
+    queryFn: () => GetShopById(shopId),
     placeholderData: keepPreviousData,
     refetchOnMount: true,
   });
@@ -61,16 +66,25 @@ export default function ShopDetailsClient() {
           </div>
           <div className={css.tabs}>
             <div className={css.tab_wrapper}>
-              <button type="button" className={css.store}>
+              <button
+                type="button"
+                className={`${css.store} ${activeTab === 'store' ? css.active : ''}`}
+                onClick={() => setActiveTab('store')}
+              >
                 Drug store
               </button>
             </div>
             <div className={css.tab_wrapper}>
-              <button type="button" className={css.medicine}>
+              <button
+                type="button"
+                className={`${css.medicine} ${activeTab === 'medicine' ? css.active : ''}`}
+                onClick={() => setActiveTab('medicine')}
+              >
                 All medicine
               </button>
             </div>
           </div>
+          {activeTab === 'medicine' && <ShopProductClient />}
         </div>
       </div>
     </div>

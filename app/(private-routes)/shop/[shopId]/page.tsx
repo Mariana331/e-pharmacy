@@ -1,4 +1,4 @@
-import ShopDetailsClient from './ShopDetailsClient';
+import ShopDetailsClient from '../[shopId]/ShopDetailsClient';
 import {
   dehydrate,
   HydrationBoundary,
@@ -7,16 +7,16 @@ import {
 import { GetShopById } from '@/lib/api/serverApi';
 
 interface Props {
-  params: { id: string };
+  params: { shopId: string };
 }
 
 export default async function ShopDetails({ params }: Props) {
-  const { id } = params;
+  const { shopId } = params;
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['shops', id],
-    queryFn: () => GetShopById(id),
+    queryKey: ['shops', shopId],
+    queryFn: () => GetShopById(shopId),
   });
 
   return (
