@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { useState } from 'react';
 import { shopStore } from '@/lib/store/shopStore';
+import { useEffect } from 'react';
 
 const Header = () => {
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
@@ -19,6 +20,10 @@ const Header = () => {
     clearIsAuthenticated();
     router.push('/login');
   };
+
+  useEffect(() => {
+    shopStore.persist.rehydrate();
+  }, []);
   return (
     <header className={css.header}>
       <div className={isAuthenticated ? 'container' : 'container_beforeAuth'}>

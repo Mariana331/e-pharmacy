@@ -15,6 +15,6 @@ export const shopStore = create<ShopStore>()(
       setShop: (shop: Shop) => set({ shop }),
       clearShop: () => set({ shop: null }),
     }),
-    { name: 'shop-store' },
+    { name: 'shop-store', skipHydration: true },
   ),
 );
