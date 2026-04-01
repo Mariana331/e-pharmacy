@@ -25,7 +25,7 @@ export default function ShopProductClient() {
   if (error || !products) return <p>Something went wrong.</p>;
 
   return (
-    <div className="container">
+    <div>
       <FilterMedicine
         value={search}
         category={category}
