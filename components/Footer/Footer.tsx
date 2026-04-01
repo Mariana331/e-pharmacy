@@ -3,9 +3,11 @@
 import css from './Footer.module.css';
 import Link from 'next/link';
 import { useAuthStore } from '@/lib/store/authStore';
+import { shopStore } from '@/lib/store/shopStore';
 
 const Footer = () => {
   const { isAuthenticated } = useAuthStore();
+  const { shop } = shopStore();
   return (
     isAuthenticated && (
       <footer className={css.footer}>
@@ -44,10 +46,12 @@ const Footer = () => {
                 <nav className={css.nav}>
                   <ul className={css.nav_list}>
                     <li className={css.nav_item}>
-                      <Link href="/shop">Shop</Link>
+                      <Link href="/shop/create">Shop</Link>
                     </li>
                     <li className={css.nav_item}>
-                      <Link href="/medicine">Medicine</Link>
+                      <Link href={shop ? `/shop/${shop._id}` : '/shop/create'}>
+                        Medicine
+                      </Link>
                     </li>
                     <li className={css.nav_item}>
                       <Link href="/statistics">Statistics</Link>

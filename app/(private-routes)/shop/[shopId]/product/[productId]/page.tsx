@@ -7,11 +7,11 @@ import {
 import { GetProductById } from '@/lib/api/serverApi';
 
 interface Props {
-  params: { shopId: string; productId: string };
+  params: Promise<{ shopId: string; productId: string }>;
 }
 
 export default async function ProductDetails({ params }: Props) {
-  const { shopId, productId } = params;
+  const { shopId, productId } = await params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ['products', shopId, productId],

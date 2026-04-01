@@ -1,0 +1,160 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f7f8fa;
+  padding-top: 40px;
+}
+
+.control_category {
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 60px;
+  padding: 0 12px;
+  height: 44px;
+  box-sizing: border-box;
+  background: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  margin-top: 4px;
+  border-radius: 15px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.valueContainer {
+  padding-right: 39px;
+}
+
+.singleValue {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: -0.03em;
+  color: #262626;
+}
+
+.option {
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: rgba(29, 30, 33, 0.4);
+}
+
+.optionSelected {
+  color: #59b17a;
+  padding-left: 12px;
+}
+
+.option:hover {
+  color: #59b17a;
+  padding-left: 12px;
+}
+
+.placeholder {
+  font-weight: 500;
+  color: rgba(29, 30, 33, 0.4);
+}
+
+.search_form {
+  display: flex;
+  position: relative;
+  background: #f7f8fa;
+}
+
+.input_form {
+  padding: 12px;
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 30px;
+  width: 100%;
+}
+
+.input_form::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: -0.03em;
+  color: rgba(29, 30, 33, 0.4);
+}
+
+.box_icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  transform: translateY(-50%);
+}
+
+.icon_search {
+  stroke-width: 2px;
+  stroke: #262626;
+  fill: transparent;
+}
+
+.form_btn_search,
+.form_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn_filter {
+  border-radius: 60px;
+  padding: 13px 30px;
+  background: #59b17a;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn_filter:hover {
+  color: #59b17a;
+  background: rgba(89, 177, 122, 0.1);
+}
+
+.icon_filter {
+  stroke: #fff;
+  fill: none;
+  display: flex;
+}
+
+.icon_filter:hover {
+  stroke: #59b17a;
+}
+
+@media screen and (min-width: 768px) {
+  .filter {
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .form_category,
+  .search_form {
+    width: 214px;
+  }
+}

@@ -1,0 +1,268 @@
+.statistic {
+  padding: 64px 0 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.statistic_title {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 114%;
+  color: #1d1e21;
+  margin-bottom: 40px;
+}
+
+.statistic_numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.statistic_all {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #59b17a;
+  border-radius: 8px;
+  width: 157px;
+  gap: 32px;
+}
+
+.inner_box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.statistic_icon {
+  stroke: #1d1e21;
+  fill: none;
+}
+
+.statistic_text {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 117%;
+  color: rgba(29, 30, 33, 0.4);
+}
+
+.statistics_count {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: #1d1e21;
+}
+
+.two_table {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.customer_wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 8px;
+}
+
+.customer_box {
+  padding: 14px;
+  background: #e7f1ed;
+}
+
+.customer_title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: #1d1e21;
+  border-radius: 8px 8px 0 0;
+}
+
+.customer_table {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 14px;
+}
+
+.table_title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  color: rgba(29, 30, 33, 0.4);
+  text-align: left;
+  padding: 14px;
+  border: 1px solid rgba(29, 30, 33, 0.08);
+}
+
+.customer_data {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  color: #1d1e21;
+  border: 1px solid rgba(29, 30, 33, 0.08);
+  padding: 30px 14px;
+}
+
+.customer_btn {
+  border: 1px solid rgba(89, 177, 122, 0.5);
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 113%;
+  color: #59b17a;
+  background: #fff;
+}
+
+.customer_btn:hover {
+  color: #fff;
+  background: #59b17a;
+}
+
+.income_wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.income_box {
+  padding: 14px;
+  background: #e7f1ed;
+}
+
+.income_title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: #1d1e21;
+}
+
+.income_table {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 14px;
+}
+
+.income_table_title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: rgba(29, 30, 33, 0.4);
+  padding: 14px;
+  border-bottom: 1px solid rgba(29, 30, 33, 0.08);
+}
+
+.income_type_data {
+  border-bottom: 1px solid rgba(29, 30, 33, 0.08);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: #e85050;
+  padding: 14px;
+}
+
+.income_data {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #1d1e21;
+  border-bottom: 1px solid rgba(29, 30, 33, 0.08);
+}
+
+.income_amount_data {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #e85050;
+  border-bottom: 1px solid rgba(29, 30, 33, 0.08);
+}
+
+@media screen and (min-width: 768px) {
+  .statistic {
+    padding: 80px 0 120px;
+  }
+
+  .statistic_numbers {
+    margin-bottom: 40px;
+  }
+
+  .statistic_all {
+    width: 221px;
+  }
+
+  .statistic_icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .statistics_count {
+    font-size: 24px;
+  }
+
+  .two_table {
+    gap: 20px;
+  }
+
+  .customer_box {
+    padding: 20px;
+  }
+
+  .customer_title {
+    font-size: 18px;
+  }
+
+  .table_title {
+    font-size: 14px;
+    padding: 20px 14px;
+  }
+
+  .customer_data {
+    font-size: 16px;
+    padding: 29px 20px;
+  }
+
+  .customer_btn {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .statistic {
+    padding: 100px 0 100px;
+  }
+
+  .statistic_all {
+    width: 240px;
+  }
+
+  .two_table {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .customer_wrapper {
+    width: 576px;
+  }
+
+  .customer_box {
+    padding: 20px 8px;
+  }
+
+  .table_title {
+    padding: 14px 8px;
+  }
+
+  .customer_data {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 29px 8px;
+    font-size: 14px;
+  }
+}

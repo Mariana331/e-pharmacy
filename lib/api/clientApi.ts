@@ -5,6 +5,7 @@ import {
   Product,
   AddProductData,
   GetProductByIdResponse,
+  GetProductParams,
 } from '@/types/product';
 
 import {
@@ -15,6 +16,8 @@ import {
   UserInfoResponse,
   LogoutResponse,
 } from '@/types/user';
+
+import { StatisticsResponse } from '@/types/statistics';
 
 export const Register = async (data: RegisterRequest) => {
   const response = await nextServer.post<RegisterResponse>(
@@ -56,9 +59,14 @@ export const UpdateShop = async (shopId: string, data: CreateShopData) => {
   return response.data;
 };
 
-export const GetProducts = async (shopId: string) => {
+export const GetProducts = async ({
+  shopId,
+  category,
+  search,
+}: GetProductParams) => {
   const response = await nextServer.get<ProductResponse>(
     `/shop/${shopId}/product`,
+    { params: { shopId, search, category } },
   );
   return response.data;
 };
@@ -75,5 +83,10 @@ export const GetProductById = async (shopId: string, productId: string) => {
   const response = await nextServer.get<GetProductByIdResponse>(
     `/shop/${shopId}/product/${productId}`,
   );
+  return response.data;
+};
+
+export const GetStatistics = async () => {
+  const response = await nextServer.get<StatisticsResponse>('/statistics');
   return response.data;
 };

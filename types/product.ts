@@ -11,6 +11,12 @@ export interface Product {
   updatedAt: string;
 }
 
+export interface GetProductParams {
+  shopId: string;
+  category: string;
+  search: string;
+}
+
 export interface ProductResponse {
   status: number;
   message: string;

@@ -1,10 +1,13 @@
 import { ProductResponse } from '@/types/product';
 import { nextServer } from './api';
 import { CreateShopData, ShopResponse } from '@/types/shop';
+import { StatisticsResponse } from '@/types/statistics';
+
 import {
   AddProductData,
   Product,
   GetProductByIdResponse,
+  GetProductParams,
 } from '@/types/product';
 import { UserInfoResponse } from '@/types/user';
 import { cookies } from 'next/headers';
@@ -55,7 +58,11 @@ export const UpdateShop = async (shopId: string, data: CreateShopData) => {
   return response.data;
 };
 
-export const GetProducts = async (shopId: string) => {
+export const GetProducts = async ({
+  shopId,
+  category,
+  search,
+}: GetProductParams) => {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get('accessToken')?.value;
   const response = await nextServer.get<ProductResponse>(
@@ -64,6 +71,7 @@ export const GetProducts = async (shopId: string) => {
       headers: {
         Authorization: accessToken ? `Bearer ${accessToken}` : '',
       },
+      params: { shopId, search, category },
     },
   );
   return response.data;
@@ -95,5 +103,16 @@ export const GetProductById = async (shopId: string, productId: string) => {
       },
     },
   );
+  return response.data;
+};
+
+export const GetStatistics = async () => {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get('accessToken')?.value;
+  const response = await nextServer.get<StatisticsResponse>('/statistics/', {
+    headers: {
+      Authorization: accessToken ? `Bearer ${accessToken}` : '',
+    },
+  });
   return response.data;
 };
