@@ -12,8 +12,8 @@ export interface Customer {
 export interface IncomeExpense {
   _id: string;
   name: string;
-  amount: number;
-  type: ['Income', 'Expense', 'Error'];
+  amount: string;
+  type: 'Income' | 'Expense' | 'Error';
 }
 
 export interface StatisticsResponse {

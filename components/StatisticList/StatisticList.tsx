@@ -14,6 +14,32 @@ interface StatisticListProps {
 }
 
 export default function StatisticList({ statistics }: StatisticListProps) {
+  const getTypeClass = (type: string) => {
+    switch (type) {
+      case 'Income':
+        return css.income_type;
+      case 'Expense':
+        return css.expense_type;
+      case 'Error':
+        return css.error_type;
+      default:
+        return '';
+    }
+  };
+
+  const getAmountClass = (type: string) => {
+    switch (type) {
+      case 'Income':
+        return css.income_amount;
+      case 'Expense':
+        return css.expense_amount;
+      case 'Error':
+        return css.error_amount;
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className={css.statistic}>
       <h2 className={css.statistic_title}>Statistics</h2>
@@ -85,19 +111,26 @@ export default function StatisticList({ statistics }: StatisticListProps) {
           <div className={css.income_box}>
             <h2 className={css.income_title}>Income/Expenses</h2>
           </div>
+          <div className={css.income_general}>
+            <p className={css.income_table_title}>Today</p>
+          </div>
           <table className={css.income_table}>
-            <thead>
-              <tr>
-                <th className={css.income_table_title}>Today</th>
-              </tr>
-            </thead>
-
             <tbody>
-              {statistics.incomeExpense.slice(0, 5).map((income) => (
+              {statistics.incomeExpense.slice(0, 6).map((income) => (
                 <tr key={income._id}>
-                  <td className={css.income_type_data}>{income.type}</td>
+                  <td className={css.income_type_data}>
+                    <span className={getTypeClass(income.type)}>
+                      {income.type}
+                    </span>
+                  </td>
                   <td className={css.income_data}>{income.name}</td>
-                  <td className={css.income_amount_data}>{income.amount}</td>
+                  <td className={css.income_amount_data}>
+                    <span className={getAmountClass(income.type)}>
+                      {Number(income.amount).toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                      })}
+                    </span>
+                  </td>
                 </tr>
               ))}
             </tbody>
