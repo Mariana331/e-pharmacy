@@ -1,6 +1,5 @@
 'use client';
 import css from './CreateShopForm.module.css';
-// import Link from 'next/link';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -42,7 +41,6 @@ export default function CreateShopForm() {
   const onSubmit = async (data: CreateShopData) => {
     try {
       const response = await CreateShop(data);
-      console.log('response:', response);
       const shop = response.data.shop;
 
       if (shop) {

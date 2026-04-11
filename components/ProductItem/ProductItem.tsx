@@ -9,6 +9,11 @@ interface ProductItemProps {
   product: Product;
 }
 
+const getPhotoUrl = (photo: string) => {
+  if (photo.startsWith('http')) return photo;
+  return `${process.env.NEXT_PUBLIC_API_URL}${photo}`;
+};
+
 export default function ProductItem({ product }: ProductItemProps) {
   const { shop } = shopStore();
   return (
@@ -16,7 +21,7 @@ export default function ProductItem({ product }: ProductItemProps) {
       <div className={css.box_image}>
         <Image
           className={css.image}
-          src={product.photo}
+          src={getPhotoUrl(product.photo)}
           alt="shop"
           width={335}
           height={300}
@@ -24,7 +29,7 @@ export default function ProductItem({ product }: ProductItemProps) {
       </div>
       <div className={css.product_info}>
         <div className={css.product_data}>
-          <p className={css.data}>{product.name}</p>
+          <p className={css.data}>{product.name.slice(0, 14)}</p>
           <p className={css.data}>৳{product.price}</p>
         </div>
         <p className={css.category}>{product.category}</p>

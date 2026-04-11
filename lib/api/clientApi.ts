@@ -2,7 +2,6 @@ import { nextServer } from './api';
 import { CreateShopData, ShopResponse } from '@/types/shop';
 import {
   ProductResponse,
-  Product,
   AddProductData,
   GetProductByIdResponse,
   GetProductParams,
@@ -63,17 +62,22 @@ export const GetProducts = async ({
   shopId,
   category,
   search,
+  page,
+  perPage,
 }: GetProductParams) => {
   const response = await nextServer.get<ProductResponse>(
     `/shop/${shopId}/product`,
-    { params: { shopId, search, category } },
+    { params: { shopId, search, category, page, perPage } },
   );
   return response.data;
 };
 
-export const AddProduct = async (shopId: string, data: AddProductData) => {
-  const response = await nextServer.post<Product>(
-    ` /shop/${shopId}/product/add`,
+export const AddProduct = async (
+  shopId: string,
+  data: FormData | AddProductData,
+) => {
+  const response = await nextServer.post<AddProductData>(
+    `/shop/${shopId}/product/add`,
     data,
   );
   return response.data;

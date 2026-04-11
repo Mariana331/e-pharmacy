@@ -12,11 +12,11 @@ export async function POST(req: NextRequest, { params }: Props) {
   const { shopId } = await params;
 
   try {
-    const body = await req.json();
+    const formData = await req.formData();
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('accessToken')?.value;
 
-    const apiRes = await api.post(`/shop/${shopId}/product/add`, body, {
+    const apiRes = await api.post(`/shop/${shopId}/product/add`, formData, {
       headers: {
         Authorization: accessToken ? `Bearer ${accessToken}` : '',
       },

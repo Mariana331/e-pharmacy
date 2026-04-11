@@ -5,7 +5,6 @@ import { StatisticsResponse } from '@/types/statistics';
 
 import {
   AddProductData,
-  Product,
   GetProductByIdResponse,
   GetProductParams,
 } from '@/types/product';
@@ -62,6 +61,8 @@ export const GetProducts = async ({
   shopId,
   category,
   search,
+  page,
+  perPage,
 }: GetProductParams) => {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get('accessToken')?.value;
@@ -71,24 +72,24 @@ export const GetProducts = async ({
       headers: {
         Authorization: accessToken ? `Bearer ${accessToken}` : '',
       },
-      params: { shopId, search, category },
+      params: { shopId, search, category, page, perPage },
     },
   );
   return response.data;
 };
 
-export const AddProduct = async (shopId: string, data: AddProductData) => {
+export const AddProduct = async (
+  shopId: string,
+  data: FormData | AddProductData,
+) => {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get('accessToken')?.value;
-  const response = await nextServer.post<Product>(
-    ` /shop/${shopId}/product/add`,
-    data,
-    {
-      headers: {
-        Authorization: accessToken ? `Bearer ${accessToken}` : '',
-      },
+
+  const response = await nextServer.post(`/shop/${shopId}/product/add`, data, {
+    headers: {
+      Authorization: accessToken ? `Bearer ${accessToken}` : '',
     },
-  );
+  });
   return response.data;
 };
 

@@ -7,6 +7,8 @@
   border-radius: 20px;
   padding: 14px 18px;
   margin-bottom: 8px;
+  width: 335px;
+  height: 300px;
 }
 
 .image {
@@ -172,11 +174,25 @@
   .product {
     width: calc((100% - 26px) / 3);
   }
+
+  .box_image {
+    width: 226px;
+    height: 260px;
+  }
+
+  .btn_add {
+    padding: 10px 16px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .product {
     width: calc((100% - 63px) / 4);
+  }
+
+  .box_image {
+    width: 280px;
+    height: 280px;
   }
 
   .btn_add {

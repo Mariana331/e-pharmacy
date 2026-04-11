@@ -15,10 +15,17 @@ export async function GET(req: NextRequest, { params }: Props) {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('accessToken')?.value;
 
+    const { searchParams } = req.nextUrl;
+    const search = searchParams.get('search') ?? '';
+    const category = searchParams.get('category') ?? '';
+    const page = searchParams.get('page');
+    const perPage = searchParams.get('perPage');
+
     const apiRes = await api.get(`/shop/${shopId}/product`, {
       headers: {
         Authorization: accessToken ? `Bearer ${accessToken}` : '',
       },
+      params: { search, category, page, perPage },
     });
     return NextResponse.json(apiRes.data, { status: apiRes.status });
   } catch (error) {

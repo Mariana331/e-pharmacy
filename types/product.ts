@@ -1,12 +1,12 @@
 export interface Product {
   _id: string;
-  id: number;
+  id?: number;
   photo: string;
   name: string;
-  suppliers: ['Square', 'Beximco', 'Uniliver', 'ACI', 'Acme'];
-  stock: number;
+  suppliers?: 'Square' | 'Beximco' | 'Uniliver' | 'ACI' | 'Acme';
+  stock?: number;
   price: number;
-  category: ['Hand', 'Head', 'Medicine', 'Leg', 'Dental Care', 'Heart'];
+  category: 'Hand' | 'Head' | 'Medicine' | 'Leg' | 'Dental Care' | 'Heart';
   createdAt: string;
   updatedAt: string;
 }
@@ -15,6 +15,8 @@ export interface GetProductParams {
   shopId: string;
   category: string;
   search: string;
+  page: number;
+  perPage: number;
 }
 
 export interface ProductResponse {
@@ -32,13 +34,10 @@ export interface ProductResponse {
 }
 
 export interface AddProductData {
-  id: number;
   photo: string;
   name: string;
-  suppliers: ['Square', 'Beximco', 'Uniliver', 'ACI', 'Acme'];
-  stock: number;
   price: number;
-  category: ['Hand', 'Head', 'Medicine', 'Leg', 'Dental Care', 'Heart'];
+  category: 'Hand' | 'Head' | 'Medicine' | 'Leg' | 'Dental Care' | 'Heart';
 }
 
 export interface GetProductByIdResponse {

@@ -11,11 +11,6 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { useAuthStore } from '@/lib/store/authStore';
 import { useState } from 'react';
-import { User } from '@/types/user';
-
-interface RegisterFormProps {
-  user: User;
-}
 
 export const Schema = Yup.object().shape({
   name: Yup.string().min(3).max(30).required('Name is required'),

@@ -5,7 +5,7 @@ import Select from 'react-select';
 import { useState } from 'react';
 
 interface FilterMedicineProps {
-  value?: string;
+  value: string;
   category: string;
   onSubmitSearch: (value: string) => void;
   onSubmitCategory: (value: string) => void;

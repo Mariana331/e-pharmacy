@@ -16,8 +16,9 @@ export default async function ShopDetails({ params }: Props) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['products', shopId, '', ''],
-    queryFn: () => GetProducts({ shopId, search: '', category: '' }),
+    queryKey: ['products', shopId, '', '', 1, 8],
+    queryFn: () =>
+      GetProducts({ shopId, search: '', category: '', page: 1, perPage: 8 }),
   });
 
   return (
