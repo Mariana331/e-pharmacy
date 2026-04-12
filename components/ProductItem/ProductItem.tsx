@@ -15,7 +15,10 @@ const getPhotoUrl = (photo: string) => {
 };
 
 export default function ProductItem({ product }: ProductItemProps) {
-  const { shop } = shopStore();
+  const { shop, addProductToDrugStore } = shopStore();
+  const handleAdd = () => {
+    addProductToDrugStore(product);
+  };
   return (
     <div className={css.product}>
       <div className={css.box_image}>
@@ -34,7 +37,7 @@ export default function ProductItem({ product }: ProductItemProps) {
         </div>
         <p className={css.category}>{product.category}</p>
         <div className={css.product_btns}>
-          <button className={css.btn_add} type="button">
+          <button className={css.btn_add} type="button" onClick={handleAdd}>
             Add to shop
           </button>
           <Link
