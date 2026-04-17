@@ -12,7 +12,7 @@ export default function ShopProductClient() {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [page, setPage] = useState(1);
-  const perPage = 10;
+  const perPage = 8;
 
   const { shopId } = useParams<{ shopId: string }>();
   const { data, isLoading, error } = useQuery({

@@ -5,6 +5,8 @@ import { Product } from '@/types/product';
 
 type ShopStore = {
   shop: Shop | null;
+  product: Product | null;
+  setProduct: (product: Product) => void;
   setShop: (shop: Shop) => void;
   clearShop: () => void;
   drugStore: Product[];
@@ -17,6 +19,8 @@ export const shopStore = create<ShopStore>()(
       shop: null,
       setShop: (shop: Shop) => set({ shop }),
       clearShop: () => set({ shop: null }),
+      product: null,
+      setProduct: (product: Product) => set({ product }),
       drugStore: [],
       addProductToDrugStore: (product: Product) =>
         set((state) => ({

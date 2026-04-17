@@ -16,6 +16,7 @@ const getPhotoUrl = (photo: string) => {
 
 export default function ProductItem({ product }: ProductItemProps) {
   const { shop, addProductToDrugStore } = shopStore();
+
   const handleAdd = () => {
     addProductToDrugStore(product);
   };

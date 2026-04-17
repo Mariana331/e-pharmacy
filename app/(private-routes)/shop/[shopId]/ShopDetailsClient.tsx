@@ -7,7 +7,8 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import ShopProductClient from './product/ShopProductsClient';
-import { shopStore } from '@/lib/store/shopStore';
+// import { shopStore } from '@/lib/store/shopStore';
+import DrugStoreList from '@/components/DrugStoreList/DrugStoreList';
 
 type Tab = 'store' | 'medicine';
 
@@ -21,9 +22,7 @@ export default function ShopDetailsClient() {
     refetchOnMount: true,
   });
 
-  const { drugStore } = shopStore();
-  if (drugStore.length === 0)
-    return <p>No products added yet. Go to All medicine and add some.</p>;
+  // const { drugStore } = shopStore();
 
   const shop = data?.data?.shop;
   if (isLoading) return <p>Loading, please wait...</p>;
@@ -90,6 +89,7 @@ export default function ShopDetailsClient() {
             </div>
           </div>
           {activeTab === 'medicine' && <ShopProductClient />}
+          {activeTab === 'store' && <DrugStoreList />}
         </div>
       </div>
     </div>

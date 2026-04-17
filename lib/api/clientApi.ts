@@ -90,6 +90,22 @@ export const GetProductById = async (shopId: string, productId: string) => {
   return response.data;
 };
 
+export const EditProductById = async (
+  shopId: string,
+  productId: string,
+  data: FormData | AddProductData,
+) => {
+  const response = await nextServer.put<GetProductByIdResponse>(
+    `/shop/${shopId}/product/${productId}/edit`,
+    data,
+  );
+  return response.data;
+};
+
+export const DeleteProductById = async (shopId: string, productId: string) => {
+  await nextServer.delete(`/shop/${shopId}/product/${productId}/delete`);
+};
+
 export const GetStatistics = async () => {
   const response = await nextServer.get<StatisticsResponse>('/statistics');
   return response.data;
