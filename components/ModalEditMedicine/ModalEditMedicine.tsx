@@ -129,7 +129,7 @@ export default function ModalEditMedicine({
           </svg>
         </button>
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <p className={css.form_title}>Edit medicine</p>
+          <h2 className={css.form_title}>Edit medicine</h2>
           <div className={css.form_image}>
             <Image
               className={css.image}
@@ -174,6 +174,7 @@ export default function ModalEditMedicine({
                 {...register('price', { valueAsNumber: true })}
                 className={css.form_input}
                 type="number"
+                step="0.01"
                 placeholder="Enter text"
               />
               {errors.price && (

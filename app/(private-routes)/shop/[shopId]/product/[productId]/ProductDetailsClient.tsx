@@ -6,6 +6,7 @@ import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { useState } from 'react';
+import { shopStore } from '@/lib/store/shopStore';
 
 type Tab = 'description' | 'reviews';
 
@@ -22,6 +23,7 @@ export default function ProductDetailsClient() {
   });
 
   const [activeTab, setActiveTab] = useState<Tab>('description');
+  const { drugStore, addProductToDrugStore, removeFromDrugStore } = shopStore();
 
   const response = data?.data;
   const product = response?.product;
@@ -30,6 +32,16 @@ export default function ProductDetailsClient() {
   if (isLoading) return <p>Loading, please wait...</p>;
 
   if (error || !product) return <p>Something went wrong.</p>;
+
+  const isAdded = drugStore.some((item) => item._id === product._id);
+
+  const handleAdd = () => {
+    if (isAdded) {
+      removeFromDrugStore(product._id);
+    } else {
+      addProductToDrugStore(product);
+    }
+  };
 
   return (
     <div className={css.product_box}>
@@ -52,8 +64,12 @@ export default function ProductDetailsClient() {
               </div>
               <p className={css.category}>category: {product.category}</p>
               <div className={css.product_btns}>
-                <button className={css.btn_add} type="button">
-                  Add to shop
+                <button
+                  className={css.btn_add}
+                  type="button"
+                  onClick={handleAdd}
+                >
+                  {isAdded ? 'Remove' : 'Add to shop'}
                 </button>
               </div>
             </div>

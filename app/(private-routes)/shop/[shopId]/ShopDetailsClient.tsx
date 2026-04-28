@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import ShopProductClient from './product/ShopProductsClient';
-// import { shopStore } from '@/lib/store/shopStore';
 import DrugStoreList from '@/components/DrugStoreList/DrugStoreList';
 
 type Tab = 'store' | 'medicine';
@@ -21,8 +20,6 @@ export default function ShopDetailsClient() {
     placeholderData: keepPreviousData,
     refetchOnMount: true,
   });
-
-  // const { drugStore } = shopStore();
 
   const shop = data?.data?.shop;
   if (isLoading) return <p>Loading, please wait...</p>;

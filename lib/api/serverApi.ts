@@ -127,7 +127,13 @@ export const EditProductById = async (
 };
 
 export const DeleteProductById = async (shopId: string, productId: string) => {
-  await nextServer.delete(`/shop/${shopId}/product/${productId}/delete`);
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get('accessToken')?.value;
+  await nextServer.delete(`/shop/${shopId}/product/${productId}/delete`, {
+    headers: {
+      Authorization: accessToken ? `Bearer ${accessToken}` : '',
+    },
+  });
 };
 
 export const GetStatistics = async () => {

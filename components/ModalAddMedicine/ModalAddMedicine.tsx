@@ -107,7 +107,7 @@ export default function ModalAddMedicine({
           </svg>
         </button>
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <p className={css.form_title}>Add medicine to store</p>
+          <h2 className={css.form_title}>Add medicine to store</h2>
           <div className={css.form_image}>
             {preview ? (
               <Image

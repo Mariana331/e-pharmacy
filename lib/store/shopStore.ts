@@ -11,6 +11,7 @@ type ShopStore = {
   clearShop: () => void;
   drugStore: Product[];
   addProductToDrugStore: (product: Product) => void;
+  removeFromDrugStore: (productId: string) => void;
 };
 
 export const shopStore = create<ShopStore>()(
@@ -28,6 +29,11 @@ export const shopStore = create<ShopStore>()(
             ? state.drugStore
             : [...state.drugStore, product],
         })),
+      removeFromDrugStore: (productId: string) => {
+        set((state) => ({
+          drugStore: state.drugStore.filter((p) => p._id !== productId),
+        }));
+      },
     }),
     { name: 'shop-store', skipHydration: true },
   ),

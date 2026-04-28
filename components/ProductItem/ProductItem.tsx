@@ -15,10 +15,17 @@ const getPhotoUrl = (photo: string) => {
 };
 
 export default function ProductItem({ product }: ProductItemProps) {
-  const { shop, addProductToDrugStore } = shopStore();
+  const { shop, drugStore, addProductToDrugStore, removeFromDrugStore } =
+    shopStore();
+
+  const isAdded = drugStore.some((item) => item._id === product._id);
 
   const handleAdd = () => {
-    addProductToDrugStore(product);
+    if (isAdded) {
+      removeFromDrugStore(product._id);
+    } else {
+      addProductToDrugStore(product);
+    }
   };
   return (
     <div className={css.product}>
@@ -39,7 +46,7 @@ export default function ProductItem({ product }: ProductItemProps) {
         <p className={css.category}>{product.category}</p>
         <div className={css.product_btns}>
           <button className={css.btn_add} type="button" onClick={handleAdd}>
-            Add to shop
+            {isAdded ? 'Remove' : 'Add to shop'}
           </button>
           <Link
             href={`/shop/${shop?._id}/product/${product._id}`}
