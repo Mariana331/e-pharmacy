@@ -9,7 +9,7 @@ const Footer = () => {
   const { isAuthenticated } = useAuthStore();
   const { shop } = shopStore();
   return (
-    isAuthenticated && (
+    isAuthenticated() && (
       <footer className={css.footer}>
         <div className="container">
           <div className={css.footer_container}>

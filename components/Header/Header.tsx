@@ -15,10 +15,10 @@ const Header = () => {
   const [hydrated, setHydrated] = useState(false);
   const router = useRouter();
   const { shop } = shopStore();
-  const { isAuthenticated, clearIsAuthenticated, user } = useAuthStore();
+  const { isAuthenticated, clearUser, user } = useAuthStore();
   const handleLogout = async () => {
     await Logout();
-    clearIsAuthenticated();
+    clearUser();
     router.push('/login');
   };
 
@@ -31,10 +31,10 @@ const Header = () => {
   }, []);
   return (
     <header className={css.header}>
-      <div className={isAuthenticated ? 'container' : 'container_beforeAuth'}>
+      <div className={isAuthenticated() ? 'container' : 'container_beforeAuth'}>
         <div className={css.header_container}>
           <div className={css.logo}>
-            {isAuthenticated ? (
+            {isAuthenticated() ? (
               <>
                 <Link href="/shop/create">
                   <picture>
@@ -83,7 +83,7 @@ const Header = () => {
               </>
             )}
           </div>
-          {isAuthenticated && user && (
+          {isAuthenticated() && user && (
             <>
               <nav className={css.nav}>
                 <ul className={css.nav_list}>

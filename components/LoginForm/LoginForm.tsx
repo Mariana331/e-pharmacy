@@ -56,7 +56,7 @@ export default function LoginForm() {
 
   return (
     <div className={css.login_form}>
-      <div className={isAuthenticated ? 'container' : 'container_beforeAuth'}>
+      <div className={isAuthenticated() ? 'container' : 'container_beforeAuth'}>
         <div className={css.login_container}>
           <div className={css.login_title}>
             <div className={css.login_image}>

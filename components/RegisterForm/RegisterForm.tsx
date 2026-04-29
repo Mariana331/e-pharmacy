@@ -60,7 +60,7 @@ export default function RegisterForm() {
 
   return (
     <div className={css.register_form}>
-      <div className={isAuthenticated ? 'container' : 'container_beforeAuth'}>
+      <div className={isAuthenticated() ? 'container' : 'container_beforeAuth'}>
         <div className={css.register_container}>
           <div className={css.register_title}>
             <div className={css.register_image}>
