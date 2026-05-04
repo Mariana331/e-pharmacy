@@ -10,7 +10,7 @@ export async function POST() {
     const sessionId = cookieStore.get('sessionId')?.value;
 
     const apiRes = await api.post(
-      '/auth/refresh',
+      '/user/refresh',
       {},
       {
         headers: {

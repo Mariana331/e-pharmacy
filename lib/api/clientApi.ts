@@ -17,6 +17,7 @@ import {
 } from '@/types/user';
 
 import { StatisticsResponse } from '@/types/statistics';
+import Cookies from 'js-cookie';
 
 export const Register = async (data: RegisterRequest) => {
   const response = await nextServer.post<RegisterResponse>(
@@ -33,6 +34,7 @@ export const Login = async (data: LoginRequest) => {
 
 export const Logout = async (): Promise<void> => {
   await nextServer.post<LogoutResponse>('/user/logout');
+  Cookies.remove('accessToken');
 };
 
 export const GetUser = async () => {

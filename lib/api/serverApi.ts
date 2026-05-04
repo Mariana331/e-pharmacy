@@ -1,4 +1,4 @@
-import { ProductResponse, Product } from '@/types/product';
+import { ProductResponse } from '@/types/product';
 import { nextServer } from './api';
 import { CreateShopData, ShopResponse } from '@/types/shop';
 import { StatisticsResponse } from '@/types/statistics';
