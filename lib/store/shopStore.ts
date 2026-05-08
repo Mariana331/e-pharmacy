@@ -35,6 +35,6 @@ export const shopStore = create<ShopStore>()(
         }));
       },
     }),
-    { name: 'shop-store', skipHydration: true },
+    { name: 'shop-store' },
   ),
 );

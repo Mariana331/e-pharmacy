@@ -13,6 +13,21 @@ interface StatisticListProps {
   };
 }
 
+const formatAmount = (amount: string | number) => {
+  const cleanedAmount = String(amount).replace(/,/g, '');
+
+  const value = Number(cleanedAmount);
+
+  if (isNaN(value)) {
+    return '0.00';
+  }
+
+  return value.toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+};
+
 export default function StatisticList({ statistics }: StatisticListProps) {
   const getTypeClass = (type: string) => {
     switch (type) {
@@ -84,23 +99,15 @@ export default function StatisticList({ statistics }: StatisticListProps) {
                 <th className={css.table_title}>Name</th>
                 <th className={css.table_title}>Email</th>
                 <th className={css.table_title}>Spent</th>
-                <th className={css.table_title}>Medicine</th>
               </tr>
             </thead>
 
             <tbody>
-              {statistics.recentlyCustomers.slice(0, 5).map((customer) => (
+              {statistics.recentlyCustomers.slice(0, 6).map((customer) => (
                 <tr key={customer._id}>
                   <td className={css.customer_data}>{customer.name}</td>
                   <td className={css.customer_data}>{customer.email}</td>
-                  <td className={css.customer_data}>
-                    {customer.spent.toLocaleString()}
-                  </td>
-                  <td className={css.customer_data}>
-                    <button className={css.customer_btn} type="button">
-                      View
-                    </button>
-                  </td>
+                  <td className={css.customer_data}>{customer.spent}</td>
                 </tr>
               ))}
             </tbody>
@@ -126,9 +133,7 @@ export default function StatisticList({ statistics }: StatisticListProps) {
                   <td className={css.income_data}>{income.name}</td>
                   <td className={css.income_amount_data}>
                     <span className={getAmountClass(income.type)}>
-                      {Number(income.amount).toLocaleString('en-US', {
-                        minimumFractionDigits: 2,
-                      })}
+                      {formatAmount(income.amount)}
                     </span>
                   </td>
                 </tr>

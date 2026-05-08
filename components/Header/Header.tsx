@@ -8,104 +8,83 @@ import { useRouter } from 'next/navigation';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { useState } from 'react';
 import { shopStore } from '@/lib/store/shopStore';
-import { useEffect } from 'react';
 
 const Header = () => {
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
+
   const router = useRouter();
-  const { shop } = shopStore();
-  const { isAuthenticated, clearUser, user } = useAuthStore();
+
+  const user = useAuthStore((state) => state.user);
+  const clearUser = useAuthStore((state) => state.clearUser);
+
+  const shop = shopStore((state) => state.shop);
+
   const handleLogout = async () => {
     await Logout();
     clearUser();
     router.push('/login');
   };
 
-  useEffect(() => {
-    const hydrate = async () => {
-      await shopStore.persist.rehydrate();
-      setHydrated(true);
-    };
-    hydrate();
-  }, []);
+  const isAuthenticated = !!user;
+
+  if (!shop) return null;
+
   return (
     <header className={css.header}>
-      <div className={isAuthenticated() ? 'container' : 'container_beforeAuth'}>
+      <div className={isAuthenticated ? 'container' : 'container_beforeAuth'}>
         <div className={css.header_container}>
           <div className={css.logo}>
-            {isAuthenticated() ? (
-              <>
-                <Link href="/shop/create">
-                  <picture>
-                    <source
-                      media="(max-width: 768px)"
-                      srcSet="/logo/green.mob.svg"
-                    />
-                    <source
-                      media="(max-width: 1440px)"
-                      srcSet="/logo/green.desk.svg"
-                    />
-                    <img
-                      className={css.image}
-                      src="/logo/green.desk.svg"
-                      alt="logo"
-                    />
-                  </picture>
-                </Link>
+            <Link href={isAuthenticated ? '/shop/create' : '/'}>
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcSet="/logo/green.mob.svg"
+                />
+                <source
+                  media="(max-width: 1440px)"
+                  srcSet="/logo/green.desk.svg"
+                />
+                <img
+                  className={css.image}
+                  src="/logo/green.desk.svg"
+                  alt="logo"
+                />
+              </picture>
+            </Link>
 
-                <Link className={css.link_text} href="/shop/create">
-                  E-Pharmacy
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link href="/">
-                  <picture>
-                    <source
-                      media="(max-width: 768px)"
-                      srcSet="/logo/green.mob.svg"
-                    />
-                    <source
-                      media="(max-width: 1440px)"
-                      srcSet="/logo/green.desk.svg"
-                    />
-                    <img
-                      className={css.image}
-                      src="/logo/green.desk.svg"
-                      alt="logo"
-                    />
-                  </picture>
-                </Link>
-                <Link className={css.link_text} href="/">
-                  E-Pharmacy
-                </Link>
-              </>
-            )}
+            <Link
+              className={css.link_text}
+              href={isAuthenticated ? '/shop/create' : '/'}
+            >
+              E-Pharmacy
+            </Link>
           </div>
-          {isAuthenticated() && user && (
+
+          {isAuthenticated && user && (
             <>
               <nav className={css.nav}>
                 <ul className={css.nav_list}>
                   <li className={css.nav_item}>
                     <Link href="/shop/create">Shop</Link>
                   </li>
+
                   <li className={css.nav_item}>
                     <Link
-                      href={
-                        hydrated && shop ? `/shop/${shop._id}` : '/shop/create'
-                      }
+                      href={shop?._id ? `/shop/${shop._id}` : '/shop/create'}
                     >
                       Medicine
                     </Link>
                   </li>
+
                   <li className={css.nav_item}>
                     <Link href="/statistics">Statistics</Link>
                   </li>
                 </ul>
               </nav>
+
               <div className={css.btns}>
                 <p className={css.user}>{user.name}</p>
+
                 <button
                   className={css.log_btn}
                   type="button"
@@ -113,6 +92,7 @@ const Header = () => {
                 >
                   Log out
                 </button>
+
                 <button
                   className={css.burger}
                   type="button"
@@ -122,6 +102,7 @@ const Header = () => {
                     <use href="/sprite.svg#icon-burger" />
                   </svg>
                 </button>
+
                 <MobileMenu
                   handleLogout={handleLogout}
                   onClose={() => setIsOpenMobileMenu(false)}

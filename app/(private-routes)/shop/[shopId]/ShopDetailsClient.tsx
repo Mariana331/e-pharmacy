@@ -35,7 +35,7 @@ export default function ShopDetailsClient() {
             <div className={css.box_info}>
               <div className={css.shop_info}>
                 <p className={css.shop_owner}>
-                  Owner:<span className={css.shop_span}> {shop.owner}</span>
+                  Owner:<span className={css.shop_span}>{shop.owner}</span>
                 </p>
                 <div className={css.wrapper}>
                   <div className={css.shop_street}>

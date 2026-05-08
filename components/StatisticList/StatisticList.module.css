@@ -366,7 +366,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 22px 8px;
+    padding: 24.9px 8px;
     font-size: 14px;
   }
 
@@ -375,6 +375,6 @@
   }
 
   .income_data {
-    font-size: 14.1px;
+    font-size: 14px;
   }
 }
