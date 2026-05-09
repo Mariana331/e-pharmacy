@@ -17,16 +17,28 @@ A web platform for online pharmacy franchise management. Built with React, it pr
 
 ## 🛠️ Tech Stack
 
-| Category     | Tools                  |
-| ------------ | ---------------------- |
-| Framework    | [Next.js] (App Router) |
-| UI Library   | [React]                |
-| Server State | [React Query]          |
-| Client State | [Zustand]              |
-| Forms        | [React Hook Form]      |
-| Validation   | [Yup]                  |
-| HTTP Client  | [Axios]                |
-| Styling      | CSS Modules            |
+### Frontend:
+
+Next.js (App Router)
+React
+TypeScript
+TanStack React Query
+Yup
+Axios
+React Select
+React Hook Form
+modern-normalize
+Zustand
+
+### Backend:
+
+Node.js + Express
+MongoDB + Mongoose
+bcrypt
+Cloudinary
+Multer
+dotenv
+pino-http
 
 ---
 
