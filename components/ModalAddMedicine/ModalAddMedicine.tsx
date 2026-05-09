@@ -164,6 +164,7 @@ export default function ModalAddMedicine({
                 {...register('price', { valueAsNumber: true })}
                 className={css.form_input}
                 type="number"
+                step="0.01"
                 placeholder="Enter text"
               />
               {errors.price && (
