@@ -1,6 +1,6 @@
 # 💊 E-Pharmacy (Franchise)
 
-A web platform for online pharmacy franchise management. Built with React, it provides a full-featured interface for pharmacy owners to manage their stores, medicine catalogue, and view business statistics.
+A web platform for online pharmacy franchise management. Built with Next.js, it provides a full-featured interface for pharmacy owners to manage their stores, medicine catalogue, and view business statistics.
 
 ---
 
