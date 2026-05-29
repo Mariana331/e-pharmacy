@@ -1,4 +1,3 @@
-import ShopProductClient from './ShopProductsClient';
 import ShopDetailsClient from '../ShopDetailsClient';
 import {
   dehydrate,
@@ -24,7 +23,6 @@ export default async function ShopDetails({ params }: Props) {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <ShopDetailsClient />
-      <ShopProductClient />
     </HydrationBoundary>
   );
 }

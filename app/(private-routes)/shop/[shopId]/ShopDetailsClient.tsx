@@ -15,7 +15,7 @@ type Tab = 'store' | 'medicine';
 export default function ShopDetailsClient() {
   const [activeTab, setActiveTab] = useState<Tab>('store');
   const { shopId } = useParams<{ shopId: string }>();
-  const { data, isLoading, error } = useQuery({
+  const { data, error } = useQuery({
     queryKey: ['shops', shopId],
     queryFn: () => GetShopById(shopId),
     placeholderData: keepPreviousData,
@@ -23,7 +23,6 @@ export default function ShopDetailsClient() {
   });
 
   const shop = data?.data?.shop;
-  if (isLoading) return <Loader />;
 
   if (error || !shop) return <Loader />;
 
