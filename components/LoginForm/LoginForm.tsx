@@ -26,7 +26,9 @@ export const Schema = Yup.object().shape({
 export default function LoginForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser, isAuthenticated } = useAuthStore();
+  const setUser = useAuthStore((state) => state.setUser);
+  const user = useAuthStore((state) => state.user);
+  const isAuthReady = useAuthStore((state) => state.isAuthReady);
   const {
     register,
     handleSubmit,
@@ -56,7 +58,11 @@ export default function LoginForm() {
 
   return (
     <div className={css.login_form}>
-      <div className={isAuthenticated() ? 'container' : 'container_beforeAuth'}>
+      <div
+        className={
+          isAuthReady && user ? 'container' : 'container_beforeAuth'
+        }
+      >
         <div className={css.login_container}>
           <div className={css.login_title}>
             <div className={css.login_image}>

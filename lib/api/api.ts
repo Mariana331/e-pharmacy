@@ -5,6 +5,22 @@ interface RetryAxiosRequestConfig extends InternalAxiosRequestConfig {
   _retry?: boolean;
 }
 
+const SESSION_PROBE_URL = '/user/user-info';
+
+const AUTH_ROUTES_WITHOUT_REDIRECT = [
+  SESSION_PROBE_URL,
+  '/user/login',
+  '/user/register',
+  '/user/refresh',
+  '/user/logout',
+  '/statistics',
+];
+
+const shouldSkipAuthRetry = (url?: string) => {
+  if (!url) return false;
+  return AUTH_ROUTES_WITHOUT_REDIRECT.some((route) => url.includes(route));
+};
+
 export const nextServer = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL + '/api',
   withCredentials: true,
@@ -32,6 +48,10 @@ nextServer.interceptors.response.use(
       return Promise.reject(error);
     }
 
+    if (shouldSkipAuthRetry(originalRequest.url)) {
+      return Promise.reject(error);
+    }
+
     if (isRefreshing) {
       return new Promise((resolve, reject) => {
         failedQueue.push({ resolve, reject });
@@ -49,10 +69,6 @@ nextServer.interceptors.response.use(
       return nextServer(originalRequest);
     } catch (refreshError) {
       processQueue(refreshError);
-
-      if (typeof window !== 'undefined') {
-        window.location.href = '/login';
-      }
       return Promise.reject(refreshError);
     } finally {
       isRefreshing = false;

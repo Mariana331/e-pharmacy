@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { useState } from 'react';
 import { shopStore } from '@/lib/store/shopStore';
+import { resetSessionCheck } from '@/lib/auth/session';
 
 const Header = () => {
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
@@ -15,17 +16,19 @@ const Header = () => {
   const router = useRouter();
 
   const user = useAuthStore((state) => state.user);
+  const isAuthReady = useAuthStore((state) => state.isAuthReady);
   const clearUser = useAuthStore((state) => state.clearUser);
 
   const shop = shopStore((state) => state.shop);
 
   const handleLogout = async () => {
     await Logout();
+    resetSessionCheck();
     clearUser();
     router.push('/login');
   };
 
-  const isAuthenticated = !!user;
+  const isAuthenticated = isAuthReady && !!user;
 
   return (
     <header className={css.header}>
@@ -58,10 +61,10 @@ const Header = () => {
             </Link>
           </div>
 
-          <nav className={css.nav}>
-            <ul className={css.nav_list}>
-              {isAuthenticated && user && (
-                <>
+          {isAuthenticated && user && (
+            <>
+              <nav className={css.nav}>
+                <ul className={css.nav_list}>
                   <li className={css.nav_item}>
                     <Link href="/shop/create">Shop</Link>
                   </li>
@@ -76,16 +79,11 @@ const Header = () => {
                       Medicine
                     </Link>
                   </li>
-                </>
-              )}
-              <li className={css.nav_item}>
-                <Link href="/statistics">Statistics</Link>
-              </li>
-            </ul>
-          </nav>
-
-          {isAuthenticated && user && (
-            <>
+                  <li className={css.nav_item}>
+                    <Link href="/statistics">Statistics</Link>
+                  </li>
+                </ul>
+              </nav>
 
               <div className={css.btns}>
                 <p className={css.user}>{user.name}</p>

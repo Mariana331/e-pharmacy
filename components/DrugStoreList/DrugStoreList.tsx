@@ -5,10 +5,7 @@ import { shopStore } from '@/lib/store/shopStore';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const getPhotoUrl = (photo: string) => {
-  if (photo.startsWith('http')) return photo;
-  return `${process.env.NEXT_PUBLIC_API_URL}${photo}`;
-};
+import { getPhotoUrl } from '@/lib/utils/photoUrl';
 
 export default function DrugStoreList() {
   const { drugStore, shop } = shopStore();

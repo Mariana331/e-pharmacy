@@ -6,10 +6,12 @@ import { useAuthStore } from '@/lib/store/authStore';
 import { shopStore } from '@/lib/store/shopStore';
 
 const Footer = () => {
-  const { isAuthenticated } = useAuthStore();
+  const user = useAuthStore((state) => state.user);
+  const isAuthReady = useAuthStore((state) => state.isAuthReady);
   const { shop } = shopStore();
   return (
-    isAuthenticated() && (
+    isAuthReady &&
+    user && (
       <footer className={css.footer}>
         <div className="container">
           <div className={css.footer_container}>

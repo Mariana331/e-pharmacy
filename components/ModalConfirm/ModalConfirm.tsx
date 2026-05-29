@@ -3,10 +3,7 @@ import Image from 'next/image';
 import Modal from '../Modal/Modal';
 import { shopStore } from '@/lib/store/shopStore';
 
-const getPhotoUrl = (photo: string) => {
-  if (photo.startsWith('http')) return photo;
-  return `${process.env.NEXT_PUBLIC_API_URL}${photo}`;
-};
+import { getPhotoUrl } from '@/lib/utils/photoUrl';
 
 interface ModalConfirmProps {
   onClose: () => void;
