@@ -44,7 +44,7 @@ nextServer.interceptors.response.use(
     isRefreshing = true;
 
     try {
-      await nextServer.post('/auth/refresh');
+      await nextServer.post('/user/refresh');
       processQueue(null);
       return nextServer(originalRequest);
     } catch (refreshError) {

@@ -27,8 +27,6 @@ const Header = () => {
 
   const isAuthenticated = !!user;
 
-  if (!shop) return null;
-
   return (
     <header className={css.header}>
       <div className={isAuthenticated ? 'container' : 'container_beforeAuth'}>
@@ -60,27 +58,34 @@ const Header = () => {
             </Link>
           </div>
 
-          {isAuthenticated && user && (
-            <>
-              <nav className={css.nav}>
-                <ul className={css.nav_list}>
+          <nav className={css.nav}>
+            <ul className={css.nav_list}>
+              {isAuthenticated && user && (
+                <>
                   <li className={css.nav_item}>
                     <Link href="/shop/create">Shop</Link>
                   </li>
-
                   <li className={css.nav_item}>
                     <Link
-                      href={shop?._id ? `/shop/${shop._id}` : '/shop/create'}
+                      href={
+                        shop?._id
+                          ? `/shop/${shop._id}/product`
+                          : '/shop/create'
+                      }
                     >
                       Medicine
                     </Link>
                   </li>
+                </>
+              )}
+              <li className={css.nav_item}>
+                <Link href="/statistics">Statistics</Link>
+              </li>
+            </ul>
+          </nav>
 
-                  <li className={css.nav_item}>
-                    <Link href="/statistics">Statistics</Link>
-                  </li>
-                </ul>
-              </nav>
+          {isAuthenticated && user && (
+            <>
 
               <div className={css.btns}>
                 <p className={css.user}>{user.name}</p>

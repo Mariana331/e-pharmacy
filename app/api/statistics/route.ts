@@ -1,18 +1,14 @@
 import { NextResponse } from 'next/server';
 import { api } from '../api';
 import { isAxiosError } from 'axios';
-import { cookies } from 'next/headers';
 import { logErrorResponse } from '../utils/utils';
+import { bearerAuthHeaders, getAccessToken } from '../utils/auth';
 
 export async function GET() {
   try {
-    const cookieStore = await cookies();
-    const accessToken = cookieStore.get('accessToken')?.value;
-
+    const accessToken = await getAccessToken();
     const apiRes = await api.get(`/statistics`, {
-      headers: {
-        Authorization: accessToken ? `Bearer ${accessToken}` : '',
-      },
+      headers: accessToken ? bearerAuthHeaders(accessToken) : undefined,
     });
     return NextResponse.json(apiRes.data, { status: apiRes.status });
   } catch (error) {

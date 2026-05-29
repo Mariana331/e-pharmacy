@@ -137,12 +137,6 @@ export const DeleteProductById = async (shopId: string, productId: string) => {
 };
 
 export const GetStatistics = async () => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get('accessToken')?.value;
-  const response = await nextServer.get<StatisticsResponse>('/statistics/', {
-    headers: {
-      Authorization: accessToken ? `Bearer ${accessToken}` : '',
-    },
-  });
+  const response = await nextServer.get<StatisticsResponse>('/statistics');
   return response.data;
 };
