@@ -1,4 +1,5 @@
+import Loader from '@/components/Loader/Loader';
 const Loading = () => {
-  return <p>Loading, please wait...</p>;
+  return <Loader />;
 };
 export default Loading;

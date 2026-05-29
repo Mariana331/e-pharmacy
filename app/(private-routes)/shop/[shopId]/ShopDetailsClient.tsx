@@ -8,6 +8,7 @@ import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import ShopProductClient from './product/ShopProductsClient';
 import DrugStoreList from '@/components/DrugStoreList/DrugStoreList';
+import Loader from '@/components/Loader/Loader';
 
 type Tab = 'store' | 'medicine';
 
@@ -22,9 +23,9 @@ export default function ShopDetailsClient() {
   });
 
   const shop = data?.data?.shop;
-  if (isLoading) return <p>Loading, please wait...</p>;
+  if (isLoading) return <Loader />;
 
-  if (error || !shop) return <p>Something went wrong.</p>;
+  if (error || !shop) return <Loader />;
 
   return (
     <div className={css.shop}>

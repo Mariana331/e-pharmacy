@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import FilterMedicine from '@/components/FilterMedicine/FilterMedicine';
 import Pagination from '@/components/Pagination/Pagination';
+import Loader from '@/components/Loader/Loader';
 
 export default function ShopProductClient() {
   const [search, setSearch] = useState('');
@@ -15,7 +16,7 @@ export default function ShopProductClient() {
   const perPage = 8;
 
   const { shopId } = useParams<{ shopId: string }>();
-  const { data, isLoading, error } = useQuery({
+  const { data, error } = useQuery({
     queryKey: ['products', shopId, search, category, page, perPage],
     queryFn: () => GetProducts({ shopId, search, category, page, perPage }),
     placeholderData: keepPreviousData,
@@ -25,9 +26,8 @@ export default function ShopProductClient() {
   const products = data?.data?.data ?? [];
   const totalPages = data?.data?.totalPages;
   console.log(totalPages);
-  if (isLoading) return <p>Loading, please wait...</p>;
 
-  if (error || !products) return <p>Something went wrong.</p>;
+  if (error || !products) return <Loader />;
 
   return (
     <div>
