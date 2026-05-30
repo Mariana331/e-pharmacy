@@ -9,9 +9,11 @@ import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { useState } from 'react';
 import { shopStore } from '@/lib/store/shopStore';
 import { resetSessionCheck } from '@/lib/auth/session';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
+  const pathname = usePathname();
 
   const router = useRouter();
 
@@ -65,21 +67,31 @@ const Header = () => {
             <>
               <nav className={css.nav}>
                 <ul className={css.nav_list}>
-                  <li className={css.nav_item}>
+                  <li
+                    className={`${css.nav_item} ${
+                      pathname === '/shop/create' ? css.active : ''
+                    }`}
+                  >
                     <Link href="/shop/create">Shop</Link>
                   </li>
-                  <li className={css.nav_item}>
+                  <li
+                    className={`${css.nav_item} ${
+                      pathname.includes('/product') ? css.active : ''
+                    }`}
+                  >
                     <Link
                       href={
-                        shop?._id
-                          ? `/shop/${shop._id}/product`
-                          : '/shop/create'
+                        shop?._id ? `/shop/${shop._id}/product` : '/shop/create'
                       }
                     >
                       Medicine
                     </Link>
                   </li>
-                  <li className={css.nav_item}>
+                  <li
+                    className={`${css.nav_item} ${
+                      pathname === '/statistics' ? css.active : ''
+                    }`}
+                  >
                     <Link href="/statistics">Statistics</Link>
                   </li>
                 </ul>

@@ -3,6 +3,7 @@ import css from './MobileMenu.module.css';
 import Link from 'next/link';
 import { User } from '@/types/user';
 import { shopStore } from '@/lib/store/shopStore';
+import { usePathname } from 'next/navigation';
 
 interface MobileMenuProps {
   handleLogout: () => void;
@@ -18,6 +19,7 @@ export const MobileMenu = ({
   user,
 }: MobileMenuProps) => {
   const { shop } = shopStore();
+  const pathname = usePathname();
 
   if (!isOpenMobileMenu) return null;
   return (
@@ -31,12 +33,20 @@ export const MobileMenu = ({
 
         <nav className={css.mobile_nav}>
           <ul className={css.nav_list}>
-            <li className={css.nav_item}>
+            <li
+              className={`${css.nav_item} ${
+                pathname === '/shop/create' ? css.active : ''
+              }`}
+            >
               <Link href="/shop/create" onClick={onClose}>
                 Shop
               </Link>
             </li>
-            <li className={css.nav_item}>
+            <li
+              className={`${css.nav_item} ${
+                pathname.includes('/product') ? css.active : ''
+              }`}
+            >
               <Link
                 href={shop ? `/shop/${shop._id}/product` : '/shop/create'}
                 onClick={onClose}
@@ -44,7 +54,11 @@ export const MobileMenu = ({
                 Medicine
               </Link>
             </li>
-            <li className={css.nav_item}>
+            <li
+              className={`${css.nav_item} ${
+                pathname === '/statistics' ? css.active : ''
+              }`}
+            >
               <Link href="/statistics" onClick={onClose}>
                 Statistics
               </Link>
