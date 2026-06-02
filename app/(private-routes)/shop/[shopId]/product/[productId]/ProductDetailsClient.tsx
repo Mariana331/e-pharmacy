@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { useState } from 'react';
 import { shopStore } from '@/lib/store/shopStore';
+import Loader from '@/components/Loader/Loader';
 
 type Tab = 'description' | 'reviews';
 
@@ -29,7 +30,7 @@ export default function ProductDetailsClient() {
   const product = response?.product;
   const reviews = response?.reviews;
 
-  if (isLoading) return <p>Loading, please wait...</p>;
+  if (isLoading) return <Loader />;
 
   if (error || !product) return <p>Something went wrong.</p>;
 
